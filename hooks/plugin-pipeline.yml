@@ -6,6 +6,8 @@ steps:
           image: "hashicorp/terraform"
           entrypoint: "/bin/sh"
           command: ["-c", "terraform init && terraform validate"]
+    agents:
+      queue: terraform
 
   - label: ":terraform: fmt"
     depends_on: ~
@@ -14,6 +16,8 @@ steps:
           image: "hashicorp/terraform"
           entrypoint: "/bin/sh"
           command: ["-c", "terraform init && terraform fmt -recursive -check -diff -write=false"]
+    agents:
+      queue: terraform
   
   - wait
 
@@ -27,3 +31,5 @@ steps:
 
   - label: ":git: Perform Tag and Publish"
     command: "bash -c $TAG_SCRIPT_PATH"
+    agents:
+      queue: terraform

@@ -22,7 +22,7 @@ steps:
             - TF_TOKEN_app_terraform_io
     agents:
       queue=${AGENT_QUEUE_NAME}
-  
+
   - wait
 
   - block: ":git: Tag and Publish"

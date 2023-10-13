@@ -8,4 +8,6 @@ requirements:
   - bash
 configuration:
   properties:
+    agent-queue:
+      type: string
 required: []

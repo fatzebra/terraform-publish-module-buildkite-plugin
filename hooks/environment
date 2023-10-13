@@ -27,3 +27,6 @@ export TFC_PLUGIN_PIPELINE_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hoo
 
 # the path to the plugin tag script to be used by the pipeline
 export TAG_SCRIPT_PATH=${BUILDKITE_PLUGINS_PATH}/${TFC_PLUGIN_PATH}/hooks/tag.sh
+
+# buildkite agent queue name
+export AGENT_QUEUE_NAME=${BUILDKITE_PLUGIN_TERRAFORM_PUBLISH_MODULE_AGENT_QUEUE:-default}

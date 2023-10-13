@@ -6,6 +6,8 @@ steps:
           image: "hashicorp/terraform"
           entrypoint: "/bin/sh"
           command: ["-c", "terraform init && terraform validate"]
+          environment:
+            - TF_TOKEN_app_terraform_io
     agents:
       queue=${AGENT_QUEUE_NAME}
 
@@ -16,9 +18,11 @@ steps:
           image: "hashicorp/terraform"
           entrypoint: "/bin/sh"
           command: ["-c", "terraform init && terraform fmt -recursive -check -diff -write=false"]
+          environment:
+            - TF_TOKEN_app_terraform_io
     agents:
       queue=${AGENT_QUEUE_NAME}
-  
+
   - wait
 
   - block: ":git: Tag and Publish"

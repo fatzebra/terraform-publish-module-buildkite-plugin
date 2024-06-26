@@ -6,6 +6,7 @@ steps:
           image: "hashicorp/terraform"
           entrypoint: "/bin/sh"
           command: ["-c", "terraform init && terraform validate"]
+          mount-ssh-agent: true
           environment:
             - TF_TOKEN_app_terraform_io
     agents:
@@ -18,6 +19,7 @@ steps:
           image: "hashicorp/terraform"
           entrypoint: "/bin/sh"
           command: ["-c", "terraform init && terraform fmt -recursive -check -diff -write=false"]
+          mount-ssh-agent: true
           environment:
             - TF_TOKEN_app_terraform_io
     agents:
